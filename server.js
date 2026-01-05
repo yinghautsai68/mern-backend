@@ -28,12 +28,14 @@ const PORT = process.env.PORT || 5000;
 const server = http.createServer(app)
 
 //MIDDLEWARE
-app.use(cors({
-    origin: "https://yinghautsai68.github.io",  // <- your frontend URL
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // allow all methods you use
-    allowedHeaders: ["Content-Type", "Authorization"], // headers your frontend sends
-    credentials: true // if you use cookies
+// Handle preflight requests for all routes
+app.options("*", cors({
+    origin: "https://yinghautsai68.github.io",
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true
 }));
+
 app.use(express.json())
 app.use('/uploads', express.static(join(__dirname, 'uploads')));
 
