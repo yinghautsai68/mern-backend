@@ -28,7 +28,11 @@ const PORT = process.env.PORT || 5000;
 const server = http.createServer(app)
 
 //MIDDLEWARE
-app.use(cors());
+app.use(cors({
+    origin: "https://yinghautsai68.github.io",
+    credentials: true // if you need cookies/auth
+}));
+
 app.use(express.json())
 app.use('/uploads', express.static(join(__dirname, 'uploads')));
 
