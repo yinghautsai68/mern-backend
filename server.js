@@ -29,10 +29,11 @@ const server = http.createServer(app)
 
 //MIDDLEWARE
 app.use(cors({
-    origin: "https://yinghautsai68.github.io",
-    credentials: true // if you need cookies/auth
+    origin: "https://yinghautsai68.github.io",  // <- your frontend URL
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // allow all methods you use
+    allowedHeaders: ["Content-Type", "Authorization"], // headers your frontend sends
+    credentials: true // if you use cookies
 }));
-
 app.use(express.json())
 app.use('/uploads', express.static(join(__dirname, 'uploads')));
 
