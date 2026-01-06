@@ -30,7 +30,10 @@ const server = http.createServer(app)
 //MIDDLEWARE
 // Handle preflight requests for all routes
 app.use(cors({
-    origin: "https://yinghautsai68.github.io",
+    origin: [
+        "http://localhost:5173",
+        "https://yinghautsai68.github.io"
+    ],
     credentials: true
 }));
 app.use(express.json())
